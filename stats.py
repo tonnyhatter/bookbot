@@ -24,3 +24,17 @@ def get_character_count(f):
         else:
             character_count[char] = 1
     return character_count
+def get_character_count_sorted(f):
+    sorted_characters = []
+    for key in f:
+        """
+        Returns list of dictionary of characters with counts sorted by character.
+        """  
+        char = key
+        count = f[key]
+        if str.isalpha(char) and char not in [" ", "\n", "\t"]:
+            # Only include alphabetic characters, excluding spaces and newlines
+            sorted_characters.append({"char": char, "count": count})
+    # Sort the characters by their count in descending order
+    sorted_characters.sort(reverse=True, key=lambda x: x["count"])
+    return sorted_characters
